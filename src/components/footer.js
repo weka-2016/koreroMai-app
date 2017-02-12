@@ -5,16 +5,15 @@ const { Link } = require('react-router')
 function Footer(props) {
 
   return (
-    <div className='footer'>
-      <footer className="footer">
-        <div className="row full-width">
-          <div className="small-12 medium-3 large-4 columns">
-            <i className="fi-laptop"></i>
-            <p>L!</p>
-          </div>
-        </div>
-      </footer>
-      { contactInfo() }
+    <div>
+    <footer id="footer">
+  				<div class="row text-center">
+  					<div class="footer-content">
+  							<p>newsletter signup</p>
+  							<p>&copy; 2017 Contact us - koreromaiapp@gmail.com</p>
+  						</div>
+  					</div>
+  		</footer>
     </div>
   )
 }

@@ -1,28 +1,63 @@
-.footer {
-  background-color: $dark-blue;
-  font-family: 'Opens Sans', sans-serif;
-  padding: 2rem 4rem;
-  text-align: center;
-  color: #fff;
-  font-size: .9em;
-  color: white;
-  height: 3em;
-  
-  h4 {
-   color: #fff;
-   font-size: 1rem;
-   font-weight: 400;
-   text-transform: uppercase;
-   margin-top: 2.5rem;
-   margin-bottom: 10px;
- }
+#footer {
+    background-color: $dark-blue;
+    padding: 1em 0;
+    color: #fff;
+    margin-top: .5em;
 }
 
-@media only screen and (min-width: 40.063em) {
-.footer {
-  .columns:nth-child(n+2) {
-     border-left: 1px solid scale-color(#fff, $lightness: -30%);
-     min-height: 280px;
+.footer-content {
+    width: 390px;
+    margin: 0 auto;
+}
+
+.footer-content > div {
+    margin-bottom: 40px;
+}
+
+.footer-content > div > p:first-child {
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.subscribe.form-control {
+    background-color: transparent;
+    border: 1px solid #7f7f7f;
+}
+
+
+.footer-content > p {
+    color: #ababab;
+    font-size: 12px;
+}
+
+
+@include smallwindow {
+  .footer {
+    font-size: 1.2em;
+    height: 2em;
+    padding-top: 8px;
   }
- }
+}
+
+@include tablet {
+  .footer {
+    font-size: 1.5em;
+    height: 2em;
+  }
+}
+
+@include smalldesk {
+  .footer {
+    font-size: 1.3em;
+    height: 1.7em;
+    padding-top: 9px;
+  }
+}
+
+@include largedesk {
+  .footer {
+    font-size: 1.3em;
+    height: 1.7em;
+    padding-top: 9px;
+  }
 }
