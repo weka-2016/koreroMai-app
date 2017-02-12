@@ -8,17 +8,17 @@ function Home(props) {
 
       <div className='row main-heading'>
         <div className='columns small-centered small-12 medium-6 large-4'>
-          <h1 className="h1-home">Kōrero Mai</h1><br />
+          <h1 className="h1-home">Kōrero Mai</h1>
         </div>
       </div>
       <div className='row sub-heading'>
         <div className='columns small-centered small-12 medium-6 large-4'>
-          <h3 className="h3-home">Learn Te Reo!</h3>
+          <h2 className="h2-home">Learn Te Reo!</h2>
         </div>
       </div>
       <div className='row main-button'>
         <div className='columns small-centered small-12 medium-6 large-4'>
-          <Link to="activity"><button className="play-button" onClick={() => props.dispatch({type: 'UPDATE_SITUATION', situation: 11})}>PLAY!</button></Link>
+          <Link to="activity"><button className="play-button" >PLAY!</button></Link>
         </div>
       </div>
 

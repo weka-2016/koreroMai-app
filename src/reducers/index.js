@@ -13,11 +13,11 @@ const wrongWords = require('./wrongWords')
 
 module.exports = combineReducers({
   // currentUser
-  activity,
+  // activity,
   modal,
   letters,
-  learnSoundPage,
-  practiceSoundPage,
+  // learnSoundPage,  // comment out unused ones
+  // practiceSoundPage,
   learnWordPage,
   practiceWordPage,
   words,

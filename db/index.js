@@ -17,9 +17,8 @@ module.exports = function (knex) {
       return knex(table)
       .select('*')
       .where('email', email)
-      .then((selectedUser) => {
-        return selectedUser
-      })
+      .first()
+      .then((selectedUser) => selectedUser)
     },
 
 //players table methods
@@ -76,8 +75,8 @@ module.exports = function (knex) {
 		 },
 
 
-		 insertScoreData: function(table,newData){
-			 return knex(table)
+		 insertScoreData: function(newData){
+			 return knex('scores')
 			 .insert(newData)
 			 .then((ids)=>{
 				 return knex('players_gameScores')
@@ -136,8 +135,8 @@ module.exports = function (knex) {
 			 	})
 				.then((ids)=>{
 					return knex(table)
-					.select('*')
 					.where({player_id: ids[0].id_player})
+					.select('*')
 				})
 		 }
 	}

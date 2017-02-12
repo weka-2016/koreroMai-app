@@ -10,7 +10,6 @@ const api = require('./api')
 module.exports = function (db) {
   const app = express()
 
-  app.use(logger('dev'))
   app.use(bodyParser.json())
   app.use(bodyParser.urlencoded({ extended: false }))
   app.use(cookieParser())
@@ -18,13 +17,14 @@ module.exports = function (db) {
   //session config
   app.set('trust proxy', 1) // trust first proxy
   app.use(session({
-  secret: 'keyboard cat',
-  resave: false,
-  saveUninitialized: true,
-  cookie: { secure: false }
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false } // TODO https .. try on Heroku
   }))
 
   if (app.get('env') === 'development') {
+    app.use(logger('dev')) // should this run in prod  ?
     // bundle client/index.js
     // and serve it at GET /bundle.js
     const webpackDevMiddleware = require('webpack-dev-middleware')

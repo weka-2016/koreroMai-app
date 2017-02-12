@@ -3,6 +3,7 @@ const { connect } = require('react-redux')
 const Groups = require('../components/groups')
 const GroupInfo = require('../components/selectedGroupInfo')
 
+// TODO - this is currently in progress in the USER_PROFILE branch
 function UserProfile(props) {
 
   return (

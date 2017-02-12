@@ -3,11 +3,12 @@ const ReactDOM = require('react-dom')
 const { Provider } = require('react-redux')
 const { createStore, applyMiddleware, compose } = require('redux')
 const { Router, Route, IndexRoute, hashHistory } = require('react-router')
+const URL = require('url-parse')
+const { routerMiddleware, push } = require('react-router-redux')
+
 const reducer = require('./reducers')
 const initialState = require('../state')
-const URL = require('url-parse')
-import { routerMiddleware, push } from 'react-router-redux'
-require('./style/main.scss')
+require('./style/main.scss') // magic?
 
 //Top Level Components
 const App = require('./app')
@@ -27,35 +28,36 @@ store.subscribe(()=> {
 	console.log('Index.js state log', store.getState());
 })
 
-hashHistory.listen((ev) => {
-  //listen to window.location directly?
-  console.log('listen', ev)
-  const paths = ev.pathname.split('/')
-  if (paths[1] === 'users'){
+// hashHistory.listen((ev) => {
+//   //listen to window.location directly?
+//   const paths = ev.pathname.split('/')
+//   if (paths[1] === 'users'){
     
-  }
-  console.log("paths", paths);
-})
+//   }
+// })
 
-const Root = ({store}) => {
-	return (
-		<Provider store = {store}>
-			<Router history = {hashHistory}>
-				<Route path = '/' component={App} store={store}>
-					<IndexRoute component={Home} />
-				 <Route path = '/home' component={Home} />
-         <Route path ='/activity' component={ActivityChoiceBox} />
-         <Route path ='/activity/learn/sounds/:id' component={LearnSounds} />
-         <Route path ='/activity/learn/words/:id' component={LearnWords} />
-         <Route path ='/activity/practice/sounds/:id' component={PracticeSounds} />
-         <Route path ='/activity/practice/words/:id' component={PracticeWords} />
-         <Route path = '/login-register' component={AuthForm} />
-         <Route path = 'users/:id/profile' component={UserProfile} />
-				</Route>
-			</Router>
-		</Provider>
-	)
-}
+const Root = ({store}) => (
+  <Provider store = {store}>
+    <Router history = {hashHistory}>
+      <Route path = '/' component={App} >
+        <IndexRoute component={Home} />
+        <Route path = '/home' component={Home} />
+
+        <Route path = '/activity'>
+          <IndexRoute component={ActivityChoiceBox} />
+          <Route path ='learn/sounds/:id' component={LearnSounds} />
+          <Route path ='learn/words/:id' component={LearnWords} />
+          <Route path ='practice/sounds/:id' component={PracticeSounds} />
+          <Route path ='practice/words/:id' component={PracticeWords} />
+        </Route>
+
+        <Route path = '/login-register' component={AuthForm} />
+        <Route path = 'users/:id/profile' component={UserProfile} />
+      </Route>
+    </Router>
+  </Provider>
+)
+
 
 document.addEventListener('DOMContentLoaded', () => {
 	console.log('DOMContentLoaded');

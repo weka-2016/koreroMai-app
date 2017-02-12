@@ -1,4 +1,4 @@
-import { routerMiddleware, push } from 'react-router-redux'
+import { routerMiddleware } from 'react-router-redux'
 
 module.exports = {
 

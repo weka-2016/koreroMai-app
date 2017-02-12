@@ -24,21 +24,20 @@ class PracticeSounds extends React.Component {
   }
 
   generateAnswer(lettersArr, answer, letters) {
-    return lettersArr.map((item) => {
-      if (item === answer) {
-        return (
-          <div className='big-music-sound'>
-            <div className='row'>
-              <div className='colums small-10 medium-6 large-4'>
-                <audio ref={`${answer}`} >
-                  <source src={`${letters[item].soundFile}`} preload=''/>
-                </audio>
-                <h1 onClick={() => this.playSound(item)}>♫</h1>
-              </div>
+    return lettersArr
+      .filter(item => item === answer)
+      .map((item) => (
+        <div className='big-music-sound'>
+          <div className='row'>
+            <div className='colums small-10 medium-6 large-4'>
+              <audio ref={`${answer}`} >
+                <source src={`${letters[item].soundFile}`} preload=''/>
+              </audio>
+              <h1 onClick={() => this.playSound(item)}>♫</h1>
             </div>
           </div>
-        )
-      }
+        </div>
+      )
     })
   }
 
